@@ -127,4 +127,21 @@ public class PassportController {
 
 
 
+    @ApiOperation(value = "退出登录", notes = "退出登录", httpMethod = "POST")
+    @PostMapping("/logout")
+    public IMOOCJSONResult logout(HttpServletRequest request, HttpServletResponse response)
+    {
+        String user = CookieUtils.getCookieValue(request, "user", true);
+
+        Object userObj = JsonUtils.jsonToPojo(user, Users.class);
+
+//        System.out.println(userObj);
+
+        CookieUtils.deleteCookie(request, response, "user");
+
+        return IMOOCJSONResult.ok(userObj);
+    }
+
+
+
 }
