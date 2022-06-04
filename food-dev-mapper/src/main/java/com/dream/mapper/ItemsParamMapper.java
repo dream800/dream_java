@@ -4,4 +4,7 @@ import com.dream.my.mapper.MyMapper;
 import com.dream.pojo.ItemsParam;
 
 public interface ItemsParamMapper extends MyMapper<ItemsParam> {
+
+    public ItemsParam selectParamById(String itemId);
+
 }
