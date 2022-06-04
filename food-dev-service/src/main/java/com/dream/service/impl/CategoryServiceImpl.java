@@ -53,6 +53,6 @@ public class CategoryServiceImpl implements CategoryService {
         Map<String, Object> map = new HashMap<>();
         map.put("rootCatId", rootCatId);
 
-        return categoryMapperCustom.getSixNewItemsLazy(map);
+        return categoryMapper.getItemsByCategory(map);
     }
 }

@@ -19,7 +19,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
-    <result column="father_id" property="fatherId" jdbcType="INTEGER" />
+    <result column="fatherId" property="fatherId" jdbcType="INTEGER" />
 
     <collection property="subCatList" ofType="com.dream.pojo.vo.SubCategoryVO">
       <id column="subId" property="subId" jdbcType="INTEGER" />
@@ -30,6 +30,19 @@
   </resultMap>
 
 
+  <resultMap id="ItemResultMap" type="com.dream.pojo.vo.NewItemsVO">
+    <id column="rootCatId" property="rootCatId" jdbcType="INTEGER" />
+    <result column="rootCatName" property="rootCatName" jdbcType="VARCHAR" />
+    <result column="slogan" property="slogan" jdbcType="VARCHAR" />
+    <result column="catImage" property="catImage" jdbcType="VARCHAR" />
+    <result column="bgColor" property="bgColor" jdbcType="VARCHAR" />
+
+    <collection property="simpleItemList" ofType="com.dream.pojo.vo.SimpleItemVO">
+      <id column="itemId" property="itemId" jdbcType="INTEGER" />
+      <result column="itemName" property="itemName" jdbcType="VARCHAR" />
+      <result column="itemUrl" property="itemUrl" jdbcType="VARCHAR" />
+    </collection>
+  </resultMap>
 
   <select id="getAll" resultMap="BaseResultMap">
     select * from category where type = #{type}
@@ -39,5 +52,34 @@
     select c.id,c.name,c.type,c.father_id fatherId,cc.id subId,cc.name subName,cc.type subType, cc.father_id subFatherId from category c
     join category cc on c.id = cc.father_id
     WHERE c.father_id = #{rootId};
+  </select>
+
+
+  <select id="getItemsByCategory" resultMap="ItemResultMap" parameterType="map">
+            SELECT
+            f.id as rootCatId,
+            f.`name` as rootCatName,
+            f.slogan as slogan,
+            f.cat_image as catImage,
+            f.bg_color as bgColor,
+            i.id as itemId,
+            i.item_name as itemName,
+            ii.url as itemUrl,
+            i.created_time as createdTime
+        FROM
+            category f
+        LEFT JOIN items i ON f.id = i.root_cat_id
+        LEFT JOIN items_img ii ON i.id = ii.item_id
+        WHERE
+            f.type = 1
+        AND
+            i.root_cat_id = #{rootCatId}
+        AND
+            ii.is_main = 1
+        ORDER BY
+            i.created_time
+        DESC
+        LIMIT 0,6
+
   </select>
 </mapper>
