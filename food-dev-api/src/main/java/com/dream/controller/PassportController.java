@@ -5,13 +5,22 @@ import com.dream.pojo.Users;
 import com.dream.pojo.bo.UserBO;
 import com.dream.service.StuService;
 import com.dream.service.UserService;
+import com.dream.utils.CookieUtils;
 import com.dream.utils.IMOOCJSONResult;
+import com.dream.utils.JsonUtils;
+import com.sun.deploy.net.HttpResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
 /**
@@ -23,7 +32,10 @@ import java.util.Objects;
 @Api(value = "注册登录", tags = {"用于注册登录"})
 @RestController
 @RequestMapping("/passport")
+@Slf4j
 public class PassportController {
+
+//    public static final Logger logger = LoggerFactory.getLogger(PassportController.class);
 
     @Autowired
     UserService userService;
@@ -76,7 +88,7 @@ public class PassportController {
 
     @ApiOperation(value = "登录", notes = "用户登录", httpMethod = "POST")
     @PostMapping("/login")
-    public IMOOCJSONResult login(@RequestBody UserBO userBO)
+    public IMOOCJSONResult login(@RequestBody UserBO userBO, HttpServletRequest request, HttpServletResponse response)
     {
 
         if (StringUtils.isBlank(userBO.getUsername())) {
@@ -92,6 +104,23 @@ public class PassportController {
         if(user == null) {
             IMOOCJSONResult.errorMsg("username or password is wrong...");
         }
+
+//        session.setMaxInactiveInterval(10);
+//        session.setAttribute("userinfo", user);
+
+        user.setSex(null);
+        user.setFace(null);
+        user.setBirthday(null);
+
+        String s = JsonUtils.objectToJson(user);
+//        System.out.println(s);
+
+        CookieUtils.setCookie(request, response, "user", s, true);
+
+
+        log.info("I love you");
+        log.debug("I love you ,too...");
+
 
         return IMOOCJSONResult.ok(user);
     }

@@ -16,6 +16,7 @@
 
 
 <button onclick="register()">注册</button>
+<button onclick="login()">登录</button>
 
 <script>
     var domain = "http://localhost:8088";
@@ -60,6 +61,23 @@
             });
     }
 
+
+    function login() {
+        axios.post('http://localhost:8088/passport/login', {
+            username: 'dream',
+            password: '123456',
+        })
+            .then(function (response) {
+                console.log(response);
+                if (response.data.status == 200) {
+                    alert("success");
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
 </script>
 
 </body>
