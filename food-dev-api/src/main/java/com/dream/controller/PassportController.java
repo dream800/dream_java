@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * 描述信息
@@ -132,6 +133,8 @@ public class PassportController {
     public IMOOCJSONResult logout(HttpServletRequest request, HttpServletResponse response)
     {
         String user = CookieUtils.getCookieValue(request, "user", true);
+
+        user = StringUtils.isEmpty(user) ? "{}" : user;
 
         Object userObj = JsonUtils.jsonToPojo(user, Users.class);
 
