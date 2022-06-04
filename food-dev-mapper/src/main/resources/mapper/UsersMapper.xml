@@ -35,4 +35,18 @@
     INSERT INTO `users` ( `id`,`username`, `password`, `birthday`, `sex`, `face`, `created_time`, `updated_time`) VALUES
     (#{id}, #{username}, #{password}, #{birthday}, #{sex}, #{face}, #{createdTime}, #{updatedTime});
   </insert>
+
+
+
+  <select id="login" resultMap="BaseResultMap">
+    select * from users
+    <where>
+      <if test="username != ''">
+        and username = #{username}
+      </if>
+      <if test="password != ''">
+        and password = #{password}
+      </if>
+    </where>
+  </select>
 </mapper>

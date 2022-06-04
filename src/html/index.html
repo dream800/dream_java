@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dream</title>
+</head>
+<body>
+
+<h1>天天吃货</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt earum enim explicabo laboriosam nisi porro quas quod sint temporibus vel. Aperiam fuga laborum nostrum optio pariatur reprehenderit, vitae? Facere, fugiat!</p>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+<button onclick="register()">注册</button>
+
+<script>
+    var domain = "http://localhost:8088";
+    // 为给定 ID 的 user 创建请求
+    // axios.get('http://localhost:8088/passport/usernameIsExist?username=abc')
+    //     .then(function (response) {
+    //         console.log(response);
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     });
+
+    // 上面的请求也可以这样做
+    // axios.get('/user', {
+    //     params: {
+    //         ID: 12345
+    //     }
+    // })
+    //     .then(function (response) {
+    //         console.log(response);
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     });
+    // 执行 POST 请求
+    //
+
+    function register() {
+        axios.post('http://localhost:8088/passport/regist', {
+            username: 'dream3',
+            password: '123456',
+            confirmPassword: '123456'
+        })
+            .then(function (response) {
+                console.log(response);
+                if (response.data.status == 200) {
+                    alert("success");
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+</script>
+
+</body>
+</html>

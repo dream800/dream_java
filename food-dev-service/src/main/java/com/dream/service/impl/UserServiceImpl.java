@@ -75,4 +75,17 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    @Override
+    public Users login(UserBO userBO) {
+        String password = userBO.getPassword();
+        String md5Str = null;
+        try {
+            md5Str = MD5Utils.getMD5Str(password);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Users user = usersMapper.login(userBO.getUsername(), md5Str);
+
+        return user;
+    }
 }

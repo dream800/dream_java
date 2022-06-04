@@ -14,4 +14,6 @@ public interface UsersMapper extends MyMapper<Users> {
 
     public Integer createUser(Users users);
 
+    public Users login(String username, String password);
+
 }

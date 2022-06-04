@@ -4,6 +4,7 @@ import com.dream.pojo.Stu;
 import com.dream.service.StuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * 描述信息
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * @author dream
  * @create 2022-06-03
  */
+@ApiIgnore
 @RestController
 @RequestMapping("/stu")
 public class StuController {

@@ -24,4 +24,14 @@ public interface UserService {
      */
     public Users createUser(UserBO userBO);
 
+
+    /**
+     * 用户注册
+     *
+     * @param userBO
+     * @return
+     */
+    public Users login(UserBO userBO);
+
+
 }
