@@ -30,6 +30,10 @@
     </where>
   </select>
 
+  <select id="getUserTest" resultMap="BaseResultMap">
+    select `id`,`username` from users limit 1;
+  </select>
+
 
   <insert id="createUser" parameterType="com.dream.pojo.Users">
     INSERT INTO `users` ( `id`,`username`, `password`, `birthday`, `sex`, `face`, `created_time`, `updated_time`) VALUES

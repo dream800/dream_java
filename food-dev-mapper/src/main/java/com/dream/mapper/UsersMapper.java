@@ -11,6 +11,8 @@ public interface UsersMapper extends MyMapper<Users> {
 
     public Users getUserByUsername(String username);
 
+    public Users getUserTest();
+
 
     public Integer createUser(Users users);
 

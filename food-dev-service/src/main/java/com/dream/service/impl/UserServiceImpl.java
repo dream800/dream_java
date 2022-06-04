@@ -38,6 +38,11 @@ public class UserServiceImpl implements UserService {
     public boolean checkUserNameIsExist(String username) {
         Users user = usersMapper.getUserByUsername(username);
 
+//
+//        Users userTest = usersMapper.getUserTest();
+//        System.out.println(userTest);
+
+
         if (user == null) {
             return false;
         }
