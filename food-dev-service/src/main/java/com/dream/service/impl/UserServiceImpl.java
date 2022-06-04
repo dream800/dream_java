@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
 
         Integer user1 = usersMapper.createUser(users);
 
-        System.out.println(user1);
+//        System.out.println(user1);
         return users;
     }
 
