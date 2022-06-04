@@ -14,4 +14,30 @@
     <result column="cat_image" property="catImage" jdbcType="VARCHAR" />
     <result column="bg_color" property="bgColor" jdbcType="VARCHAR" />
   </resultMap>
+
+  <resultMap id="SubResultMap" type="com.dream.pojo.vo.CategoryVO">
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="father_id" property="fatherId" jdbcType="INTEGER" />
+
+    <collection property="subCatList" ofType="com.dream.pojo.vo.SubCategoryVO">
+      <id column="subId" property="subId" jdbcType="INTEGER" />
+      <result column="subName" property="subName" jdbcType="VARCHAR" />
+      <result column="subType" property="subType" jdbcType="INTEGER" />
+      <result column="subFatherId" property="subFatherId" jdbcType="INTEGER" />
+    </collection>
+  </resultMap>
+
+
+
+  <select id="getAll" resultMap="BaseResultMap">
+    select * from category where type = #{type}
+  </select>
+
+  <select id="getCategoryByRootId" parameterType="int" resultMap="SubResultMap">
+    select c.id,c.name,c.type,c.father_id fatherId,cc.id subId,cc.name subName,cc.type subType, cc.father_id subFatherId from category c
+    join category cc on c.id = cc.father_id
+    WHERE c.father_id = #{rootId};
+  </select>
 </mapper>
