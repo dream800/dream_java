@@ -4,6 +4,7 @@ package com.dream;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * 描述信息
@@ -13,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan(basePackages = "com.dream.mapper")
+@ComponentScan(basePackages = {"com.dream", "org.n3r.idworker"})
 public class Application {
 
     public static void main(String[] args) {

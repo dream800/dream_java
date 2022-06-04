@@ -22,7 +22,17 @@
 
 
   <select id="getUserByUsername" resultMap="BaseResultMap">
-    select * from users where username = #{username}
+    select * from users
+    <where>
+      <if test="username != ''">
+        and username = #{username}
+      </if>
+    </where>
   </select>
 
+
+  <insert id="createUser" parameterType="com.dream.pojo.Users">
+    INSERT INTO `users` ( `id`,`username`, `password`, `birthday`, `sex`, `face`, `created_time`, `updated_time`) VALUES
+    (#{id}, #{username}, #{password}, #{birthday}, #{sex}, #{face}, #{createdTime}, #{updatedTime});
+  </insert>
 </mapper>

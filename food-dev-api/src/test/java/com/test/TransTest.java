@@ -15,15 +15,15 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @create 2022-06-03
  */
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
+//@RunWith(SpringRunner.class)
+//@SpringBootTest(classes = Application.class)
 public class TransTest {
 
 
     @Autowired
     StuService stuService;
 
-    @Test
+//    @Test
     public void myTest()
     {
 //        stuService.updateStu(1203);
