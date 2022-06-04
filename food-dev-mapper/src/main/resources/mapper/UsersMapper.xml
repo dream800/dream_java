@@ -18,4 +18,11 @@
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
     <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
   </resultMap>
+
+
+
+  <select id="getUserByUsername" resultMap="BaseResultMap">
+    select * from users where username = #{username}
+  </select>
+
 </mapper>
