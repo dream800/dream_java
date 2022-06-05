@@ -12,4 +12,9 @@ public interface ItemsSpecMapper extends MyMapper<ItemsSpec> {
 
     public List<ItemsSpec> selectSpecById(String itemId);
 
+
+    public ItemsSpec selectSpecBySpecId(String specId);
+
+
+
 }

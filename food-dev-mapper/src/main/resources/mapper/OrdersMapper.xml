@@ -21,4 +21,11 @@
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
     <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
   </resultMap>
+
+  <insert id="inserOrder">
+    INSERT INTO `orders`
+    (`id`, `user_id`, `receiver_name`, `receiver_mobile`, `receiver_address`, `total_amount`, `real_pay_amount`, `post_amount`, `pay_method`, `is_comment`, `created_time`, `updated_time`)
+     VALUES
+     (#{id}, #{userId}, #{receiverName}, #{receiverMobile}, #{receiverAddress}, #{totalAmount}, #{realPayAmount}, #{postAmount}, #{payMethod}, 0,  #{createdTime}, #{updatedTime});
+  </insert>
 </mapper>

@@ -32,4 +32,9 @@
   <select id="selectAddressByUid" resultMap="BaseResultMap">
         select * from user_address where  user_id = #{userId}
   </select>
+
+
+  <select id="selectUserAddress" resultMap="BaseResultMap">
+        select * from user_address where  user_id = #{userId} and id = #{addressId}
+  </select>
 </mapper>

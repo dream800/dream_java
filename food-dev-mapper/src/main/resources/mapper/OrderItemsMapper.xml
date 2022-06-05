@@ -15,4 +15,12 @@
     <result column="price" property="price" jdbcType="INTEGER" />
     <result column="buy_counts" property="buyCounts" jdbcType="INTEGER" />
   </resultMap>
+
+
+  <insert id="insertOrderItem">
+        INSERT INTO `order_items` (`id`, `order_id`, `item_id`, `item_img`, `item_name`, `item_spec_id`, `item_spec_name`, `price`, `buy_counts`)
+         VALUES
+          (#{id}, #{orderId}, #{itemId}, #{itemImg}, #{itemName}, #{itemSpecId}, #{itemSpecName}, #{price}, #{buyCounts});
+
+  </insert>
 </mapper>

@@ -26,4 +26,11 @@
         SELECT * FROM <include refid="base_table" />
         where  item_id = #{itemId}
   </select>
+
+
+
+  <select id="selectSpecBySpecId" resultMap="BaseResultMap">
+    SELECT * FROM <include refid="base_table" />
+    where  id = #{specId}
+  </select>
 </mapper>

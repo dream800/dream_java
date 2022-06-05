@@ -156,16 +156,13 @@ public class ItemServiceImpl implements ItemService {
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public ItemsSpec queryItemSpecById(String specId) {
-        return itemsSpecMapper.selectByPrimaryKey(specId);
+        return itemsSpecMapper.selectSpecBySpecId(specId);
     }
 
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public String queryItemMainImgById(String itemId) {
-        ItemsImg itemsImg = new ItemsImg();
-        itemsImg.setItemId(itemId);
-        itemsImg.setIsMain(YesOrNo.YES.type);
-        ItemsImg result = itemsImgMapper.selectOne(itemsImg);
+        ItemsImg result = itemsImgMapper.selectMainImg(itemId, YesOrNo.YES.type );
         return result != null ? result.getUrl() : "";
     }
 

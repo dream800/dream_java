@@ -14,5 +14,8 @@ public interface UserAddressMapper extends MyMapper<UserAddress> {
     public List<UserAddress> selectAddressByUid(String userId);
 
 
+    public UserAddress selectUserAddress(String addressId, String userId);
+
+
 
 }

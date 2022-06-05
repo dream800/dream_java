@@ -10,4 +10,10 @@ public interface ItemsImgMapper extends MyMapper<ItemsImg> {
 
     public List<ItemsImg> selectImgById(String itemId);
 
+
+
+    public ItemsImg selectMainImg(String itemId, Integer isMain);
+
+
+
 }
