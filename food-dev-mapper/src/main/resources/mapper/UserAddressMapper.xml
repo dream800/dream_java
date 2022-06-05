@@ -18,4 +18,18 @@
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
     <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
   </resultMap>
+
+
+
+
+  <insert id="insertAddress" parameterType="com.dream.pojo.UserAddress">
+        INSERT INTO `user_address` (`id`, `user_id`, `receiver`, `mobile`, `province`, `city`, `district`, `detail`, `extand`, `is_default`, `created_time`, `updated_time`)
+         VALUES
+          (#{id}, #{userId},#{receiver},#{mobile},#{province},#{city}, #{district}, #{detail}, '', #{isDefault}, #{createdTime},#{updatedTime});
+  </insert>
+
+
+  <select id="selectAddressByUid" resultMap="BaseResultMap">
+        select * from user_address where  user_id = #{userId}
+  </select>
 </mapper>
