@@ -8,7 +8,6 @@ import com.dream.service.UserService;
 import com.dream.utils.CookieUtils;
 import com.dream.utils.IMOOCJSONResult;
 import com.dream.utils.JsonUtils;
-import com.sun.deploy.net.HttpResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
