@@ -16,4 +16,25 @@
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
     <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
   </resultMap>
+
+
+  <select id="getCommentByItemId" resultType="com.dream.pojo.vo.ItemCommentVO">
+   SELECT
+          ic.comment_level as commentLevel,
+          ic.content as content,
+          ic.sepc_name as specName,
+          ic.created_time as createdTime,
+          u.face as userFace,
+          u.nickname as nickname
+      FROM
+          items_comments ic
+      LEFT JOIN
+          users u
+      ON
+          ic.user_id = u.id
+      where  ic.item_id =   #{itemId}
+      <if test="level !=null and level != ''">
+        and ic.comment_level = #{level}
+      </if>
+  </select>
 </mapper>

@@ -72,9 +72,12 @@ public class ItemsController extends BaseController {
             @ApiParam(name = "level", value = "评价等级", required = false)
             @RequestParam Integer level,
             @ApiParam(name = "page", value = "查询下一页的第几页", required = false)
-            @RequestParam Integer page,
+            @RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
             @ApiParam(name = "pageSize", value = "分页的每一页显示的条数", required = false)
-            @RequestParam Integer pageSize) {
+            @RequestParam(name = "pageSize", required = false, defaultValue = "10") Integer pageSize) {
+
+        System.out.println(page);
+        System.out.println(pageSize);
 
         if (StringUtils.isBlank(itemId)) {
             return IMOOCJSONResult.errorMsg(null);
