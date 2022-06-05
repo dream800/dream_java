@@ -30,7 +30,7 @@ public class OrderJob {
      */
 
 //    @Scheduled(cron = "0/3 * * * * ?")
-    @Scheduled(cron = "0/3 * * * * ?")
+//    @Scheduled(cron = "0/3 * * * * ?")
 //    @Scheduled(fixedRate=1000)
     public void autoCloseOrder() {
         System.out.println("I love you ...");
